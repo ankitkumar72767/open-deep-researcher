@@ -4,3 +4,5 @@ langchain
 langchain-openai
 tavily-python
 pypdf
+python-dotenv
+
