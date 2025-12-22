@@ -8,158 +8,110 @@ from memory import HistoryManager
 from utils import extract_pdf_text
 from graph_builder import build_graph
 
+# ===============================
+# 🎨 GLOBAL ADVANCED CSS
+# ===============================
 st.markdown("""
 <style>
 
-/* =======================
-   GLOBAL APP
-======================= */
-.stApp {
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    color: #e5e7eb;
-    font-family: "Segoe UI", system-ui, sans-serif;
+/* ---------- GLOBAL ---------- */
+html, body, [class*="css"] {
+    color: #e5e7eb !important;
+    background-color: #020617 !important;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* =======================
-   SIDEBAR
-======================= */
+/* ---------- MAIN APP ---------- */
+.stApp {
+    background: radial-gradient(circle at top, #020617, #020617);
+}
+
+/* ---------- SIDEBAR ---------- */
 section[data-testid="stSidebar"] {
     background: linear-gradient(180deg, #020617, #020617);
     border-right: 1px solid #1f2937;
 }
 
-section[data-testid="stSidebar"] h1,
-section[data-testid="stSidebar"] h2,
-section[data-testid="stSidebar"] h3 {
-    color: #38bdf8;
+section[data-testid="stSidebar"] * {
+    color: #e5e7eb !important;
 }
 
-/* =======================
-   HEADINGS
-======================= */
-h1, h2, h3 {
-    font-weight: 800;
-    letter-spacing: 0.5px;
-}
-
+/* ---------- HEADINGS ---------- */
 .hero-title {
     font-size: 3rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    background: linear-gradient(
-        90deg,
-        #38bdf8,
-        #22c55e,
-        #a855f7
-    );
+    font-weight: 800;
+    background: linear-gradient(90deg, #38bdf8, #22c55e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-align: center;
 }
 
+/* ---------- SETTINGS TITLES ---------- */
+h1, h2, h3, h4 {
+    color: #e5e7eb !important;
+}
 
-/* =======================
-   BUTTONS (ALL)
-======================= */
-.stButton button {
-    width: 100%;
+/* ---------- INPUT ---------- */
+.stChatInput textarea {
+    background: #020617 !important;
+    color: #e5e7eb !important;
     border-radius: 14px;
+    border: 1px solid #1f2937;
+}
+
+/* ---------- CHAT MESSAGES ---------- */
+.stChatMessage {
+    background: #020617;
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid #1f2937;
+}
+
+/* Assistant message */
+.stChatMessage[data-testid="chat-message-assistant"] {
+    background: #020617;
+}
+
+/* User message */
+.stChatMessage[data-testid="chat-message-user"] {
+    background: #020617;
+}
+
+/* ---------- MARKDOWN OUTPUT ---------- */
+.stMarkdown, .stMarkdown p, .stMarkdown li {
+    color: #e5e7eb !important;
+}
+
+/* ---------- BUTTONS ---------- */
+.stButton > button {
+    width: 100%;
     padding: 0.7rem;
-    font-weight: 700;
+    border-radius: 14px;
+    font-weight: 600;
     background: linear-gradient(90deg,#2563eb,#22c55e);
     color: white;
     border: none;
     transition: all 0.2s ease-in-out;
 }
 
-.stButton button:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 20px #22c55e55;
+.stButton > button:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
 }
 
-.stButton button:active {
-    transform: scale(0.98);
-}
-
-/* =======================
-   CLEAR BUTTON STYLE
-======================= */
-.clear-btn button {
-    background: linear-gradient(90deg,#dc2626,#f97316);
-}
-
-/* =======================
-   CHAT AREA
-======================= */
-div[data-testid="stChatMessage"] {
+/* ---------- EXPANDERS ---------- */
+details {
     background: #020617;
-    border-radius: 18px;
-    border: 1px solid #1f2937;
-    padding: 14px;
-    margin-bottom: 12px;
-    animation: fadeIn 0.3s ease-in-out;
-}
-
-/* USER MESSAGE */
-div[data-testid="stChatMessage"][data-role="user"] {
-    border-left: 4px solid #38bdf8;
-}
-
-/* ASSISTANT MESSAGE */
-div[data-testid="stChatMessage"][data-role="assistant"] {
-    border-left: 4px solid #22c55e;
-}
-
-/* =======================
-   REPORT CARD
-======================= */
-.report-card {
-    background: #020617;
-    border-radius: 18px;
-    padding: 30px;
-    border: 1px solid #1f2937;
-    line-height: 1.8;
-}
-
-/* =======================
-   HISTORY LIST
-======================= */
-.chat-item {
-    padding: 10px;
     border-radius: 12px;
-    margin-bottom: 8px;
-    background: #020617;
     border: 1px solid #1f2937;
-    cursor: pointer;
-    transition: all 0.2s;
+    padding: 10px;
 }
 
-.chat-item:hover {
+/* ---------- STATUS BOX ---------- */
+div[data-testid="stStatusWidget"] {
     background: #020617;
-    border-left: 4px solid #22c55e;
-    transform: translateX(4px);
-}
-
-/* =======================
-   SCROLLBAR
-======================= */
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-thumb {
-    background: #22c55e;
-    border-radius: 6px;
-}
-::-webkit-scrollbar-track {
-    background: #020617;
-}
-
-/* =======================
-   ANIMATIONS
-======================= */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
+    border-radius: 14px;
+    border: 1px solid #1f2937;
+    color: #e5e7eb;
 }
 
 </style>
