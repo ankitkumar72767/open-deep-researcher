@@ -1,182 +1,110 @@
-📘 Open Deep Researcher
-
+# Open Deep Researcher  
 AI-Powered Research Automation System
 
-1️⃣ Project Title
+---
 
-Open Deep Researcher – Agentic AI for Automated Research & Paper Summarization
+## Project Overview
 
-2️⃣ Project Overview (Brief Description)
+Open Deep Researcher is an AI-powered research assistant that automates
+topic-based and academic paper research using a multi-agent architecture.
 
-Open Deep Researcher is an AI-powered research assistant designed to automate academic and topic-based research using a multi-agent architecture.
+---
 
-🔍 Problem Statement
+## What Problem It Solves
 
-Manual research is time-consuming and unstructured
+- Manual research is time-consuming
+- Academic paper summarization requires expertise
+- Switching between tools is inefficient
 
-Summarizing academic papers requires expertise and effort
+---
 
-Switching between topic research and paper summaries is inefficient
+## Objective
 
-🎯 Objective
+- Automatically detect user input type (topic or URL)
+- Generate structured research reports
+- Summarize academic papers efficiently
 
-Automatically understand user intent (topic or URL)
+---
 
-Generate structured research reports or concise paper summaries
+## Software Dependencies
 
-Provide a ChatGPT-like research experience with memory support
+- Python 3.10+
+- Streamlit
+- OpenAI API
+- Tavily Search API
 
-3️⃣ Software and Hardware Dependencies
-🧑‍💻 Software Dependencies
+---
 
-Programming Language: Python 3.10+
+## Hardware Requirements
 
-Framework: Streamlit
+- Minimum 8 GB RAM
+- Internet connection
+- GPU not required
 
-AI / LLM APIs:
+---
 
-OpenAI (GPT models)
+## Architecture
 
-Tavily Search API
+User Interface → Planner Agent → Searcher Agent → Writer Agent → Memory
 
-Libraries & Tools:
+---
 
-openai
+## Workflow
 
-streamlit
+- User enters a topic or paper URL
+- Planner agent decides research flow
+- Searcher agent gathers information
+- Writer agent generates final output
+- Results are stored in history
 
-requests
+---
 
-python-dotenv
+## Agent Roles
 
-json
+### Planner Agent
+- Defines research structure
+- Identifies input type
 
-uuid
+### Searcher Agent
+- Fetches web and academic data
 
-💻 Hardware Dependencies
+### Writer Agent
+- Generates clean and formatted output
 
-Minimum 8 GB RAM
+---
 
-Internet connection required
+## Outputs
 
-GPU not mandatory (optional for heavy workloads)
+- Detailed research reports
+- Short topic summaries
+- Academic paper summaries
+- Stored research history
 
-4️⃣ Architecture Diagram
-User Interface (Streamlit)
-        |
-        v
-Planner Agent
-        |
-        v
-Searcher Agent (Web / Paper Search)
-        |
-        v
-Writer Agent (Summarization / Report)
-        |
-        v
-Memory Module (History + Context)
+---
 
-5️⃣ Workflow
-Step-by-Step Flow
+## Limitations
 
-User enters a topic or academic paper URL
+- API rate limits may apply
+- Output quality depends on source data
+- Long documents are summarized at a high level
 
-Planner Agent identifies input type
+---
 
-Searcher Agent gathers relevant information
+## Future Enhancements
 
-Writer Agent generates:
+- Multi-chat threads
+- DOCX / PDF export
+- Dark / Light theme
+- Improved citation accuracy
 
-Detailed research report OR
+---
 
-Concise paper summary
+## Deployed Link
 
-Output is displayed and stored in history
+- https://ankitkumar72767-open-deep-researcher-app-zyg9xh.streamlit.app/
 
-6️⃣ Agent Roles (Brief Explanation)
-🧠 Planner Agent
+---
 
-Determines research structure
+## GitHub Repository
 
-Identifies whether input is a topic or URL
-
-🔎 Searcher Agent
-
-Fetches academic or web-based information
-
-Uses Tavily / web search APIs
-
-✍️ Writer Agent
-
-Generates clean, structured output
-
-Supports APA / IEEE citation styles
-
-🔗 Agent Pipeline
-
-Planner → Searcher → Writer
-
-Modular and extensible architecture
-
-7️⃣ Sample Working Demo (Optional)
-Example Inputs
-
-Natural Language Processing
-
-https://arxiv.org/abs/1810.04805
-
-Example Outputs
-
-Structured literature-style report
-
-Bullet-based academic paper summary
-
-(Screenshots can be added here)
-
-8️⃣ Outputs / Results
-
-The system produces:
-
-📄 Detailed academic research reports
-
-📌 Short topic summaries
-
-📘 Paper-specific summaries (URL-based)
-
-🧠 Stored research history for continuity
-
-9️⃣ Limitations
-
-Depends on external APIs (rate limits apply)
-
-Accuracy depends on source availability
-
-Very long documents may be summarized at a high level
-
-🔮 10️⃣ Future Enhancements
-
-Multi-chat thread support (ChatGPT-style)
-
-DOCX / PDF export
-
-Dark / Light theme toggle
-
-Improved citation validation
-
-Advanced memory-based follow-up queries
-
-🌐 11️⃣ Deployed Project Link
-
-🔗 Live App:
-https://ankitkumar72767-open-deep-researcher-app-zyg9xh.streamlit.app/
-
-🔗 GitHub Repository:
-https://github.com/ankitkumar72767/open-deep-researcher
-
-📌 Important Notes
-
-README follows mentor-provided structure
-
-Written in simple, academic-friendly language
-
-Fully suitable for final evaluation
+- https://github.com/ankitkumar72767/open-deep-researcher
