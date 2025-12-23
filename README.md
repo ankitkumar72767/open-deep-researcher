@@ -1,110 +1,182 @@
-# 🧠 Open Deep Researcher  
-**AI-Powered Research Automation Agent**
+📘 Open Deep Researcher
 
-Open Deep Researcher is an **agentic AI research assistant** that can understand **any research topic or academic paper URL** and generate either a **detailed research report** or a **concise paper summary** automatically.
+AI-Powered Research Automation System
 
-This project was built as part of the **Infosys Springboard Virtual Internship (Artificial Intelligence)** and focuses on applying real-world **AI, LLMs, and multi-agent workflows**.
+1️⃣ Project Title
 
----
+Open Deep Researcher – Agentic AI for Automated Research & Paper Summarization
 
-## 🚀 Features
+2️⃣ Project Overview (Brief Description)
 
-- 🔍 Accepts **any research topic** or **academic paper URL**
-- 🧠 Automatically detects input type (topic vs. paper)
-- 📄 Generates:
-  - Detailed research reports  
-  - Concise academic paper summaries
-- 🤖 **Multi-Agent AI Architecture**
-  - **Planner Agent** – designs research structure
-  - **Searcher Agent** – gathers relevant information
-  - **Writer Agent** – produces clean, formatted output
-- 🕘 Research history stored for continuity
-- 🎨 Clean, modern **Streamlit UI**
-- ⚡ Modular, scalable project structure
+Open Deep Researcher is an AI-powered research assistant designed to automate academic and topic-based research using a multi-agent architecture.
 
----
+🔍 Problem Statement
 
-## 🧠 Agent Workflow
+Manual research is time-consuming and unstructured
 
-User Input
-↓
-Planner Agent → Research plan & structure
-↓
-Searcher Agent → Relevant data & context
-↓
-Writer Agent → Final research report / summary
+Summarizing academic papers requires expertise and effort
 
-yaml
-Copy code
+Switching between topic research and paper summaries is inefficient
 
----
+🎯 Objective
 
-## 🛠 Tech Stack
+Automatically understand user intent (topic or URL)
 
-- **Python**
-- **Streamlit**
-- **LLM / Agentic AI**
-- **JSON-based memory handling**
-- **Modular architecture**
-  - Agents
-  - State management
-  - Memory handling
+Generate structured research reports or concise paper summaries
 
----
+Provide a ChatGPT-like research experience with memory support
 
-## 📂 Project Structure
+3️⃣ Software and Hardware Dependencies
+🧑‍💻 Software Dependencies
 
-<img width="448" height="361" alt="image" src="https://github.com/user-attachments/assets/2b6c1435-e5d7-42e0-876a-8d7a77dffa8f" />
+Programming Language: Python 3.10+
 
-## ⚙️ Setup & Run Locally
+Framework: Streamlit
 
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/ankitkumar72767/open-deep-researcher.git
-cd open-deep-researcher
-2️⃣ Create Virtual Environment
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-3️⃣ Install Dependencies
-bash
-Copy code
-pip install -r requirements.txt
-4️⃣ Configure API Keys
-Create config.py and add:
+AI / LLM APIs:
 
-python
-Copy code
-OPENROUTER_API_KEY = "your_openrouter_api_key"
-TAVILY_API_KEY = "your_tavily_api_key"
-5️⃣ Run the App
-bash
-Copy code
-streamlit run app.py
-🌐 Live Demo
-🔗 Streamlit App:
+OpenAI (GPT models)
+
+Tavily Search API
+
+Libraries & Tools:
+
+openai
+
+streamlit
+
+requests
+
+python-dotenv
+
+json
+
+uuid
+
+💻 Hardware Dependencies
+
+Minimum 8 GB RAM
+
+Internet connection required
+
+GPU not mandatory (optional for heavy workloads)
+
+4️⃣ Architecture Diagram
+User Interface (Streamlit)
+        |
+        v
+Planner Agent
+        |
+        v
+Searcher Agent (Web / Paper Search)
+        |
+        v
+Writer Agent (Summarization / Report)
+        |
+        v
+Memory Module (History + Context)
+
+5️⃣ Workflow
+Step-by-Step Flow
+
+User enters a topic or academic paper URL
+
+Planner Agent identifies input type
+
+Searcher Agent gathers relevant information
+
+Writer Agent generates:
+
+Detailed research report OR
+
+Concise paper summary
+
+Output is displayed and stored in history
+
+6️⃣ Agent Roles (Brief Explanation)
+🧠 Planner Agent
+
+Determines research structure
+
+Identifies whether input is a topic or URL
+
+🔎 Searcher Agent
+
+Fetches academic or web-based information
+
+Uses Tavily / web search APIs
+
+✍️ Writer Agent
+
+Generates clean, structured output
+
+Supports APA / IEEE citation styles
+
+🔗 Agent Pipeline
+
+Planner → Searcher → Writer
+
+Modular and extensible architecture
+
+7️⃣ Sample Working Demo (Optional)
+Example Inputs
+
+Natural Language Processing
+
+https://arxiv.org/abs/1810.04805
+
+Example Outputs
+
+Structured literature-style report
+
+Bullet-based academic paper summary
+
+(Screenshots can be added here)
+
+8️⃣ Outputs / Results
+
+The system produces:
+
+📄 Detailed academic research reports
+
+📌 Short topic summaries
+
+📘 Paper-specific summaries (URL-based)
+
+🧠 Stored research history for continuity
+
+9️⃣ Limitations
+
+Depends on external APIs (rate limits apply)
+
+Accuracy depends on source availability
+
+Very long documents may be summarized at a high level
+
+🔮 10️⃣ Future Enhancements
+
+Multi-chat thread support (ChatGPT-style)
+
+DOCX / PDF export
+
+Dark / Light theme toggle
+
+Improved citation validation
+
+Advanced memory-based follow-up queries
+
+🌐 11️⃣ Deployed Project Link
+
+🔗 Live App:
 https://ankitkumar72767-open-deep-researcher-app-zyg9xh.streamlit.app/
 
-🎯 Skills Demonstrated
-Agentic AI system design
+🔗 GitHub Repository:
+https://github.com/ankitkumar72767/open-deep-researcher
 
-Prompt engineering
+📌 Important Notes
 
-Research automation
+README follows mentor-provided structure
 
-Python application development
+Written in simple, academic-friendly language
 
-Modular & scalable architecture
-
-State and memory management
-
-📌 Internship Context
-This project was developed during the Infosys Springboard Virtual Internship (AI), focusing on practical implementation of Artificial Intelligence and Machine Learning concepts through hands-on projects.
-
-📬 Contact
-Ankit Kumar
-AI & ML Developer
-🔗 GitHub: https://github.com/ankitkumar72767
-🔗 LinkedIn: https://www.linkedin.com/in/ankit-kumar-/
-
+Fully suitable for final evaluation
