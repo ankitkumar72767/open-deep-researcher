@@ -1,11 +1,11 @@
-# 🧠 Open Deep Research Agent
+#  Open Deep Research Agent
 
 An **Agentic AI-powered Research Automation System**  
 Developed as part of **Infosys Springboard – Virtual Internship (Artificial Intelligence)**
 
 ---
 
-## 📖 Project Overview
+##  Project Overview
 
 **Open Deep Research Agent** is an intelligent research assistant that automates **topic-based** and **paper-based** research using a **multi-agent AI architecture**.
 
@@ -14,14 +14,14 @@ The system accepts:
 - Any **academic paper / URL**
 
 and generates:
-- 📄 **Concise summaries**
-- 📘 **Detailed, structured research reports**
+-  **Concise summaries**
+-  **Detailed, structured research reports**
 
 This project demonstrates the **practical application of Agentic AI concepts** in real-world research automation.
 
 ---
 
-## 🎯 Objective
+## Objective
 
 - Automate manual research workflows  
 - Convert unstructured inputs into structured knowledge  
@@ -30,7 +30,7 @@ This project demonstrates the **practical application of Agentic AI concepts** i
 
 ---
 
-## 🧩 Problem Statement
+## Problem Statement
 
 Manual research is often:
 - Time-consuming  
@@ -39,14 +39,14 @@ Manual research is often:
 
 Researchers and students spend excessive time collecting, organizing, and summarizing information.
 
-### ✅ Solution
+### Solution
 This project solves the problem by using **specialized AI agents**, where each agent handles a specific responsibility such as planning, searching, and writing.
 
 ---
 
-## ⚙️ Software & Hardware Dependencies
+## Software & Hardware Dependencies
 
-### 💻 Software Dependencies
+###  Software Dependencies
 - **Python** 3.9+
 - **Streamlit** (UI Framework)
 - **OpenAI / OpenRouter API** (LLM)
@@ -54,18 +54,18 @@ This project solves the problem by using **specialized AI agents**, where each a
 - **dotenv** (Environment variables)
 - **JSON** (Memory & history storage)
 
-### 🖥️ Hardware Dependencies
+### Hardware Dependencies
 - Minimum **4 GB RAM**
 - No GPU required
 - Stable internet connection
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 <img width="632" height="620" alt="TASK_3_System_architecture" src="https://github.com/user-attachments/assets/e806e71a-b181-4829-903e-5039cd9c7a9d" />
 
-## 🔄 Workflow Explanation
+## Workflow Explanation
 
 1. User enters a **topic or research paper URL**
 2. Planner Agent identifies:
@@ -79,19 +79,19 @@ This project solves the problem by using **specialized AI agents**, where each a
 
 ---
 
-## 🧠 Agent Roles
+##  Agent Roles
 
-### 🧩 Planner Agent
+###  Planner Agent
 - Determines research intent
 - Designs the structure of the report
 - Coordinates agent flow
 
-### 🔍 Searcher Agent
+###  Searcher Agent
 - Fetches relevant web content
 - Uses Tavily API for real-time search
 - Filters noisy data
 
-### ✍️ Writer Agent
+### Writer Agent
 - Generates human-readable content
 - Produces structured, academic-style output
 - Ensures clarity and correctness
@@ -126,7 +126,7 @@ Clean readable explanations
 <img width="1913" height="694" alt="image" src="https://github.com/user-attachments/assets/6791bad5-0d66-4abe-97c9-bc9269b6b6b1" />
 <img width="1566" height="321" alt="image" src="https://github.com/user-attachments/assets/85035866-d16e-4143-be44-16e20d2a7fca" />
 
-## ⚠️ Limitations
+## Limitations
 
 - Depends on third-party APIs
 - Very large topics may be token-limited
@@ -159,14 +159,14 @@ Improving problem-solving and practical AI development skills
 
 Overall, this project proves that AI can be effectively used to save time, reduce manual effort, and enhance research productivity, making it highly useful for students, researchers, and professionals.
 
-## 🌐 Live Project Deployment
+## Live Project Deployment
 
 🔗 **Streamlit App:**  
 https://ankitkumar72767-open-deep-researcher-app-zyg9xh.streamlit.app/
 
 ---
 
-## 🧪 Local Setup Instructions
+## Local Setup Instructions
 
 ```bash
 git clone https://github.com/ankitkumar72767/open-deep-researcher.git
@@ -177,7 +177,7 @@ venv\Scripts\activate
 
 pip install -r requirements.txt
 streamlit run app.py
-🧑‍💻 Developer Details
+Developer Details
 Ankit Kumar
 B.Tech – Computer Science (AI & ML)
 Virtual Intern – Artificial Intelligence
