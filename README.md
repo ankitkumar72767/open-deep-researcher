@@ -180,6 +180,6 @@ streamlit run app.py
 Developer Details
 Ankit Kumar
 B.Tech – Computer Science (AI & ML)
-Virtual Intern – Artificial Intelligence
-Infosys Springboard
+
+
 
