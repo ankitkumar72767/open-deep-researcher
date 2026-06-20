@@ -1,7 +1,7 @@
 #  Open Deep Research Agent
 
 An **Agentic AI-powered Research Automation System**  
-Developed as part of **Infosys Springboard – Virtual Internship (Artificial Intelligence)**
+
 
 ---
 
