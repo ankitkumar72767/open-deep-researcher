@@ -7,4 +7,4 @@ class AgentState(TypedDict):
     search_mode: str          
     research_plan: List[str]  
     search_results: str       
-    final_report: str         
+    final_report: str       
