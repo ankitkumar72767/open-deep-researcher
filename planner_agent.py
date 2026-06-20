@@ -19,7 +19,7 @@ def planner_node(state, llm):
     {topic}
 
     # ==================================================
-    # 🧠 LOGIC: CONTEXT AWARENESS vs. NEW TOPIC
+    #  LOGIC: CONTEXT AWARENESS vs. NEW TOPIC
     # ==================================================
     Analyze the CURRENT USER REQUEST in relation to the PREVIOUS CONVERSATION.
     
