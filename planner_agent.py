@@ -44,3 +44,5 @@ def planner_node(state, llm):
     queries = [q.strip() for q in response.content.split('\n') if q.strip()]
     
     return {"research_plan": queries[:3]}
+
+
