@@ -41,7 +41,7 @@ class HistoryManager:
         with open(self.history_file, 'w') as f:
             json.dump(new_history, f)
         return new_history
-        # ✅ ADD THIS METHOD (FIXES ERROR)
+        #  ADD THIS METHOD (FIXES ERROR)
     def clear_history(self):
         """Clears all research history."""
         with open(self.history_file, 'w') as f:
