@@ -76,7 +76,7 @@ def writer_node(state, llm):
     {data}
     
     # ==================================================
-    # 🛑 FINAL RULES
+    #  FINAL RULES
     # ==================================================
     1. **TOPIC ISOLATION:** If the User Input seems unrelated to the previous context, treat it as a brand new topic.
     2. **ANTI-REGURGITATION:** Do NOT repeat the User Input or Context at the start.
