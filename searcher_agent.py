@@ -23,3 +23,4 @@ def searcher_node(state, tavily_client):
 
     combined_content = "\n".join(results)
     return {"search_results": combined_content}
+    
