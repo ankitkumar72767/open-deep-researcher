@@ -120,11 +120,7 @@ div[data-testid="stStatusWidget"] {
 # ==========================================
 # 🔐 IMPORT API KEYS FROM CONFIG
 # ==========================================
-try:
-    from config import GOOGLE_API_KEY, TAVILY_API_KEY
-except ImportError:
-    st.error("⚠️ config.py file not found! Please create it with your API keys.")
-    st.stop()
+from config import GOOGLE_API_KEY, TAVILY_API_KEY
 # ==========================================
 
 # --- PAGE CONFIG ---
@@ -153,7 +149,7 @@ with st.sidebar:
     
     # --- TAB 1: SETTINGS ---
     with tab_settings:
-        if not GOOGLE_API_KEY or not TAVILY_API_KEY:
+        if GOOGLE_API_KEY and TAVILY_API_KEY:
             st.success(" API Keys Loaded successfully")
         else:
             st.error("❌ Keys missing in config.py")
