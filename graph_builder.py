@@ -1,6 +1,6 @@
 from functools import partial
 from langgraph.graph import StateGraph, END
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from tavily import TavilyClient
 
 from state import AgentState
@@ -9,13 +9,12 @@ from searcher_agent import searcher_node
 from writer_agent import writer_node
 
 
-def build_graph(openai_api_key, tavily_api_key):
+def build_graph(google_api_key, tavily_api_key):
 
-    llm = ChatOpenAI(
-        model="gpt-4o-mini",
-        api_key=openai_api_key,
-        temperature=0.5,
-        max_tokens=1500
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.5-flash",
+        google_api_key=google_api_key,
+        temperature=0.5
     )
 
     tavily = TavilyClient(api_key=tavily_api_key)
