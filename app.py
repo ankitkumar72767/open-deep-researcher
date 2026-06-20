@@ -121,7 +121,7 @@ div[data-testid="stStatusWidget"] {
 # 🔐 IMPORT API KEYS FROM CONFIG
 # ==========================================
 try:
-    from config import OPENAI_API_KEY, TAVILY_API_KEY
+    from config import GOOGLE_API_KEY, TAVILY_API_KEY
 except ImportError:
     st.error("⚠️ config.py file not found! Please create it with your API keys.")
     st.stop()
@@ -153,7 +153,7 @@ with st.sidebar:
     
     # --- TAB 1: SETTINGS ---
     with tab_settings:
-        if OPENAI_API_KEY and TAVILY_API_KEY:
+        if not GOOGLE_API_KEY or not TAVILY_API_KEY:
             st.success(" API Keys Loaded successfully")
         else:
             st.error("❌ Keys missing in config.py")
@@ -291,7 +291,7 @@ for msg in st.session_state.messages:
 placeholder = "Ask a research question..." if st.session_state.messages else "Enter a topic..."
 
 if prompt := st.chat_input(placeholder):
-    if not OPENAI_API_KEY or not TAVILY_API_KEY:
+    if not GOOGLE_API_KEY or not TAVILY_API_KEY:
          st.error("⚠️ API Keys are missing in config.py!")
          st.stop()
          
@@ -324,7 +324,7 @@ if st.session_state.messages and st.session_state.messages[-1]["role"] == "user"
 
     with st.chat_message("assistant", avatar="🤖"):
         try:
-            app_graph = build_graph(OPENAI_API_KEY, TAVILY_API_KEY)
+            app_graph = build_graph(GOOGLE_API_KEY, TAVILY_API_KEY)
             
             # Status Indicator
             status_placeholder = st.status("🤖 Agent Working...", expanded=False)
