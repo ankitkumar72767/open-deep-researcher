@@ -291,7 +291,7 @@ for msg in st.session_state.messages:
 placeholder = "Ask a research question..." if st.session_state.messages else "Enter a topic..."
 
 if prompt := st.chat_input(placeholder):
-    if not OPENROUTER_API_KEY or not TAVILY_API_KEY:
+    if not OPENAI_API_KEY or not TAVILY_API_KEY:
          st.error("⚠️ API Keys are missing in config.py!")
          st.stop()
          
@@ -324,7 +324,7 @@ if st.session_state.messages and st.session_state.messages[-1]["role"] == "user"
 
     with st.chat_message("assistant", avatar="🤖"):
         try:
-            app_graph = build_graph(OPENROUTER_API_KEY, TAVILY_API_KEY)
+            app_graph = build_graph(OPENAI_API_KEY, TAVILY_API_KEY)
             
             # Status Indicator
             status_placeholder = st.status("🤖 Agent Working...", expanded=False)
