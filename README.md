@@ -1,4 +1,11 @@
 # 🚀 Open Deep Research Agent
+# 🚀 Open Deep Research Agent
+
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-WebApp-red)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agentic_AI-green)
+![License](https://img.shields.io/badge/License-MIT-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
 > **An Agentic AI-Powered Research Automation Platform with Multi-Agent AI, Multi-LLM Support, OCR, PDF Analysis, AI Review, and Dynamic Knowledge Graph Generation.**
 
