@@ -1,5 +1,4 @@
-# 🚀 Open Deep Research Agent
-# 🚀 Open Deep Research Agent
+#  Open Deep Research Agent
 
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-WebApp-red)
