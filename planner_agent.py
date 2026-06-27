@@ -1,48 +1,111 @@
 def planner_node(state, llm):
-    topic = state['topic']
-    history = state.get('chat_history', '') 
-    search_mode = state.get('search_mode', 'General')
-    
-    # Define instructions based on mode
+
+    topic = state["topic"]
+
+    history = state.get(
+        "chat_history",
+        ""
+    )
+
+    search_mode = state.get(
+        "search_mode",
+        "General Web"
+    )
+
+    # ==========================
+    # SEARCH MODE LOGIC
+    # ==========================
     if search_mode == "Academic Papers":
-        mode_instruction = "Focus on Scientific Research Papers, PDF Studies, and Arxiv."
+
+        mode_instruction = """
+        Focus on:
+        - Scientific Research Papers
+        - IEEE Papers
+        - Springer Papers
+        - ACM Papers
+        - Research PDFs
+        - Peer Reviewed Journals
+        """
+
+    elif search_mode == "ArXiv":
+
+        mode_instruction = """
+        Focus ONLY on:
+        - ArXiv Research Papers
+        - Latest AI Research
+        - Machine Learning Papers
+        - Deep Learning Papers
+        - Large Language Models
+        - Computer Vision Research
+        - NLP Research
+        """
+
     else:
-        mode_instruction = "Focus on general comprehensive information from the web."
+
+        mode_instruction = """
+        Focus on:
+        - General Web Information
+        - Tutorials
+        - Articles
+        - Blogs
+        - News Sources
+        """
 
     prompt = f"""
-    You are a Research Planner.
-    
-    PREVIOUS CONVERSATION:
-    {history}
+You are an Expert Research Planner.
 
-    CURRENT USER REQUEST: 
-    {topic}
+PREVIOUS CONVERSATION:
 
-    # ==================================================
-    #  LOGIC: CONTEXT AWARENESS vs. NEW TOPIC
-    # ==================================================
-    Analyze the CURRENT USER REQUEST in relation to the PREVIOUS CONVERSATION.
-    
-    **CASE 1: FOLLOW-UP (Related)**
-    (e.g., "tell me more", "what about the costs?", "explain that", "summarize the second paper")
-    -> ACTION: Use the PREVIOUS CONVERSATION to clarify context.
+{history}
 
-    **CASE 2: NEW TOPIC (Unrelated)**
-    (e.g., Previous was about "Quantum Physics", Current is "Best Pizza in NY")
-    -> ACTION: **COMPLETELY IGNORE** the PREVIOUS CONVERSATION. Treat this as a fresh start. Do not generate queries that mix the two topics.
+CURRENT USER REQUEST:
 
-    # ==================================================
-    # TASK
-    # ==================================================
-    Based on the logic above, generate 3 specific search queries.
-    {mode_instruction}
+{topic}
 
-    Constraint: Return ONLY the 3 queries separated by newlines. Do not number them.
-    """
+# ==================================================
+# CONTEXT ANALYSIS
+# ==================================================
+
+CASE 1:
+If the current query is related to the previous conversation,
+use the previous context.
+
+CASE 2:
+If the current query is unrelated,
+ignore all previous context and treat it as a new topic.
+
+# ==================================================
+# TASK
+# ==================================================
+
+Generate 3 highly effective search queries.
+
+Search Mode:
+
+{search_mode}
+
+Instructions:
+
+{mode_instruction}
+
+Rules:
+
+1. Generate exactly 3 search queries.
+2. Queries should be detailed and research-oriented.
+3. Do not number the queries.
+4. Return only the queries.
+5. One query per line.
+
+"""
 
     response = llm.invoke(prompt)
-    queries = [q.strip() for q in response.content.split('\n') if q.strip()]
-    
-    return {"research_plan": queries[:3]}
 
+    queries = [
+        q.strip()
+        for q in response.content.split("\n")
+        if q.strip()
+    ]
 
+    return {
+        "research_plan": queries[:3]
+    }
