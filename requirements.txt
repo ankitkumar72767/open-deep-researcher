@@ -1,15 +1,49 @@
-streamlit
-langgraph
+streamlit>=1.45.0
+
+# AI Framework
 langchain
+langgraph
+langchain-community
 langchain-openai
-tavily-python
-pypdf
-python-dotenv
-reportlab
 langchain-google-genai
+langchain-groq
+langchain-text-splitters
+
+# LLM APIs
 google-generativeai
+openai
+tavily-python
+
+# Environment
+python-dotenv
+
+# Vector Database
 faiss-cpu
 sentence-transformers
-langchain-community
-langchain-google-genai
-langchain-text-splitters
+
+# PDF Processing
+pypdf
+PyMuPDF
+reportlab
+python-docx
+
+# OCR
+easyocr
+opencv-python-headless
+Pillow
+
+# Data Processing
+pandas
+numpy
+
+# Knowledge Graph
+networkx
+plotly
+
+# Web Scraping
+beautifulsoup4
+requests
+scholarly
+
+# Utilities
+lxml
