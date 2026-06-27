@@ -1,92 +1,186 @@
 def writer_node(state, llm):
-    topic = state['topic']
-    data = state['search_results']
-    # --- FIX 1: Access History ---
-    history = state.get('chat_history', '') 
-    
-    length = state.get('summary_length', 'Detailed')
-    search_mode = state.get('search_mode', 'General Web')
 
-    # --- 0. DEFINE LENGTH INSTRUCTION ---
+    topic = state["topic"]
+
+    data = state["search_results"]
+
+    history = state.get(
+        "chat_history",
+        ""
+    )
+
+    length = state.get(
+        "summary_length",
+        "Detailed"
+    )
+
+    search_mode = state.get(
+        "search_mode",
+        "General Web"
+    )
+
+    # ==================================
+    # REPORT LENGTH
+    # ==================================
+
     if length == "Short":
-        b_length_instruction = "Length Constraint: Target approx 500 words. Be concise."
+
+        b_length_instruction = """
+        Generate 400-600 words.
+        Be concise and focused.
+        """
+
     else:
-        b_length_instruction = "Length Constraint: Target approx 800+ words. Provide comprehensive detail."
 
-    # --- 1. ACADEMIC MODE ---
+        b_length_instruction = """
+        Generate 1200-2000 words.
+        Include deep analysis and insights.
+        """
+
+    # ==================================
+    # REPORT STRUCTURES
+    # ==================================
+
     if search_mode == "Academic Papers":
-        role_desc = "You are an Academic Researcher."
-        
-        structure = f"""
-        ADAPTIVE FORMATTING - ANALYZE THE INPUT CAREFULLY:
-        
-        **SCENARIO A: Direct Question / Specific Detail / Follow-up**
-        (Triggers: "Explain...", "What is...", "Summarize the [section]...", "limitations?", "results?", "meaning of X")
-        - **Format:** Write exactly **ONE single, comprehensive paragraph**.
-        - **Length:** Target **300 words**.
-        - **Prohibition:** NO Headers. NO Bullet Points. Just the answer.
-        - **Citations:** Do NOT include references.
-        
-        **SCENARIO B: Broad Deep Research / Full Summary**
-        (Triggers: "Summarize this paper", "Deep research on [Paper Name]", "Full analysis", or ANY NEW TOPIC)
-        - **Format:** Full Academic Report with Side Headings.
-        - **Guideline:** {b_length_instruction}
-        - **Structure:**
-          ###  Title
-          ###  Abstract
-          ###  Literature Review
-          ###  Methodology
-          ### Limitations
-          ###  References (STRICTLY as markdown links: - [Title](URL))
-        """
-        citation_instruction = "For Scenario B (Full Summary), you MUST use the URLs provided to create clickable links."
 
-    # --- 2. GENERAL WEB MODE ---
-    else: 
-        role_desc = "You are an articulate AI Assistant."
-        
-        structure = f"""
-        ADAPTIVE FORMATTING:
-        
-        **SCENARIO A: Direct Question / Follow-up / Summary of Previous**
-        (Triggers: "Summarize previous", "Short summary", "What did you just say?", "Explain that")
-        - **Format:** Write exactly **ONE single, comprehensive paragraph** (approx 300 words).
-        - **Rule:** Do NOT use headers. Do NOT use bullet points.
-        
-        **SCENARIO B: Broad Research Topic / New Topic**
-        - Format: Structured Report (Introduction, Key Findings, Conclusion).
-        - Guideline: {b_length_instruction}
+        role_desc = """
+        You are a Senior Academic Researcher.
+        Produce publication-quality reports.
         """
-        citation_instruction = "Do NOT include a 'References' section. Do NOT include links."
 
-    # --- 3. FINAL PROMPT ---
+        structure = f"""
+        # Title
+        ## Executive Summary
+        ## Abstract
+        ## Literature Review
+        ## Methodology
+        ## Results and Discussion
+        ## Research Gaps
+        ## Limitations
+        ## Future Scope
+        ## Conclusion
+        ## References
+
+        References format:
+        - [Paper Title](URL)
+
+        {b_length_instruction}
+        """
+
+    elif search_mode == "ArXiv":
+
+        role_desc = """
+        You are an AI Research Scientist.
+        Create a professional survey paper.
+        """
+
+        structure = f"""
+        # Research Topic
+        ## Executive Summary
+        ## Top Papers Reviewed
+        ## Comparative Analysis
+        ## Key Contributions
+        ## Technical Findings
+        ## Research Trends
+        ## Research Gaps
+        ## Future Research Directions
+        ## Conclusion
+        ## References
+
+        References format:
+        - [Paper Title](URL)
+
+        {b_length_instruction}
+        """
+
+    elif search_mode == "Google Scholar":
+
+        role_desc = """
+        You are a Literature Review Expert.
+        """
+
+        structure = f"""
+        # Research Topic
+        ## Executive Summary
+        ## Key Papers
+        ## Literature Review
+        ## Comparative Analysis
+        ## Research Gaps
+        ## Future Scope
+        ## Conclusion
+        ## References
+
+        Mention:
+        - Author
+        - Year
+        - Findings
+
+        {b_length_instruction}
+        """
+
+    else:
+
+        role_desc = """
+        You are an Expert Research Analyst.
+        """
+
+        structure = f"""
+        # Introduction
+        ## Executive Summary
+        ## Key Findings
+        ## Detailed Analysis
+        ## Opportunities
+        ## Risks
+        ## Conclusion
+
+        {b_length_instruction}
+        """
+
+    # ==================================
+    # FINAL PROMPT
+    # ==================================
+
     prompt = f"""
     {role_desc}
-    
-    PREVIOUS CONVERSATION CONTEXT:
+
+    PREVIOUS CONVERSATION:
     {history}
 
-    CURRENT USER INPUT: {topic}
-    
-    {structure}
-    
-    {citation_instruction}
+    CURRENT USER INPUT:
+    {topic}
 
-    Verified Search Data:
+    SEARCH MODE:
+    {search_mode}
+
+    REPORT STRUCTURE:
+    {structure}
+
+    VERIFIED RESEARCH DATA:
     {data}
-    
-    # ==================================================
-    #  FINAL RULES
-    # ==================================================
-    1. **TOPIC ISOLATION:** If the User Input seems unrelated to the previous context, treat it as a brand new topic.
-    2. **ANTI-REGURGITATION:** Do NOT repeat the User Input or Context at the start.
-    3. **START IMMEDIATELY:** Start your response with the answer/report content.
-    4. **CLEAN OUTPUT:** Do NOT wrap the output in code blocks.
+
+    RULES:
+
+    1. Use ONLY provided data.
+    2. No hallucinated references.
+    3. Use professional markdown formatting.
+    4. Use headings and subheadings.
+    5. Start directly with report.
+    6. Do not use code blocks.
+    7. Highlight important findings.
+    8. Include actionable insights.
+    9. Write professionally.
+    10. Create a clean and readable report.
     """
 
     response = llm.invoke(prompt)
-    
-    # --- 4. CLEANUP ---
-    clean_content = response.content.replace('```markdown', '').replace('```', '').strip()
-    
-    return {"final_report": clean_content}
+
+    clean_content = (
+        response.content
+        .replace("```markdown", "")
+        .replace("```", "")
+        .strip()
+    )
+
+    return {
+        "final_report": clean_content
+    }
