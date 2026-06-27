@@ -21,11 +21,12 @@ python-dotenv
 faiss-cpu
 sentence-transformers
 
-# PDF Processing
+# PDF & Document Processing
 pypdf
 PyMuPDF
 reportlab
 python-docx
+python-pptx
 
 # OCR
 easyocr
@@ -33,31 +34,21 @@ opencv-python-headless
 Pillow
 
 # Data Processing
-pandas
 numpy
+pandas
 
-# Knowledge Graph
+# Knowledge Graph & Visualization
 networkx
 plotly
+
+# Academic Search
+arxiv
+scholarly
 
 # Web Scraping
 beautifulsoup4
 requests
-scholarly
+lxml
 
 # Utilities
-lxml
-plotly
-networkx
-arxiv
-scholarly
-easyocr
-opencv-python-headless
-PyMuPDF
-python-docx
-pandas
-numpy
-Pillow
-beautifulsoup4
-requests
-lxml
+protobuf
