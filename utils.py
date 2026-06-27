@@ -7,4 +7,3 @@ def extract_pdf_text(uploaded_file):
     for page in pdf_reader.pages:
         text += page.extract_text() + "\n"
     return text
-    
