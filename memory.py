@@ -4,8 +4,9 @@ import datetime
 import uuid  # <--- NEW IMPORT
 
 class HistoryManager:
-    def __init__(self):
-        self.history_file = "agent_history.json"
+    def __init__(self, username):
+        self.username = username
+        self.history_file = f"{username}_history.json"
 
     def load_history(self):
         """Loads history from a JSON file if it exists."""
@@ -41,7 +42,7 @@ class HistoryManager:
         with open(self.history_file, 'w') as f:
             json.dump(new_history, f)
         return new_history
-        #  ADD THIS METHOD (FIXES ERROR)
+        # ✅ ADD THIS METHOD (FIXES ERROR)
     def clear_history(self):
         """Clears all research history."""
         with open(self.history_file, 'w') as f:
