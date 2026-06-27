@@ -47,3 +47,17 @@ scholarly
 
 # Utilities
 lxml
+plotly
+networkx
+arxiv
+scholarly
+easyocr
+opencv-python-headless
+PyMuPDF
+python-docx
+pandas
+numpy
+Pillow
+beautifulsoup4
+requests
+lxml
