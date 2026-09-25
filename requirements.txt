@@ -1,3 +1,4 @@
+
 streamlit>=1.45.0
 
 # AI Framework
@@ -43,7 +44,8 @@ plotly
 
 # Academic Search
 arxiv
-scholarly
+scholarly==1.7.11
+bibtexparser>=1.4.0,<2.0
 
 # Web Scraping
 beautifulsoup4
